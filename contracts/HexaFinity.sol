@@ -25,24 +25,4 @@ address private constant TAX_RECEIVER = 0x35a8276Acc795618bCFeac47BE808D5a7e77ff
         _unpause();
     }
 
-    // Adjusted transfer and transferFrom to incorporate tax and burn logic
-    function transfer(address recipient, uint256 amount) public override returns (bool) {
-        uint256 taxFee = amount * 2 / 1000; // 0.2%
-        uint256 burnFee = amount / 1000; // 0.1%
-        uint256 amountAfterFees = amount - taxFee - burnFee;
-
-        _burn(_msgSender(), burnFee);
-        _transfer(_msgSender(), TAX_RECEIVER, taxFee); // Transfer tax to the tax receiver address
-        return super.transfer(recipient, amountAfterFees);
-    }
-
-    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
-        uint256 taxFee = amount * 2 / 1000; // 0.2%
-        uint256 burnFee = amount / 1000; // 0.1%
-        uint256 amountAfterFees = amount - taxFee - burnFee;
-
-        _burn(sender, burnFee);
-        _transfer(sender, TAX_RECEIVER, taxFee); // Transfer tax to the tax receiver address
-        return super.transferFrom(sender, recipient, amountAfterFees);
-    }
 }
