@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
 
-contract HexaFinity is ERC20, ERC20Burnable, Pausable {
+contract VeFinity is ERC20, ERC20Burnable, Pausable {
     uint256 public constant INITIAL_SUPPLY = 6e12 * (10 ** 18); // 6 trillion tokens, accounting for 18 decimals
     address public owner;
 address private constant TAX_RECEIVER = 0x35a8276Acc795618bCFeac47BE808D5a7e77ff0a;
